@@ -12,7 +12,7 @@ def main():
         os.chdir(cwd)
 
     distorm_module = Extension(
-        "_distorm3",
+        "_distorm3s",
         sources=sorted(glob('src/*.c')) + ["python/python_module_init.c"],
         include_dirs=['src', 'include'],
         define_macros=[('SUPPORT_64BIT_OFFSET', None), ('DISTORM_DYNAMIC', None)],
@@ -26,7 +26,7 @@ def main():
     'package_dir'       : { '' : 'python' },
     'ext_modules'       : [distorm_module],
     # Metadata
-    'name'              : 'distorm3',
+    'name'              : 'distorm3s',
     'version'           : '3.5.3',
     'description'       : 'The goal of diStorm3 is to decode x86/AMD64' \
                           ' binary streams and return a structure that' \
@@ -53,6 +53,9 @@ def main():
                         'Operating System :: MacOS :: MacOS X',
                         'Operating System :: POSIX :: Linux',
                         'Programming Language :: Python :: 3.5',
+                        'Programming Language :: Python :: 3.10',
+                        'Programming Language :: Python :: 3.11',
+                        'Programming Language :: Python :: 3.12',
                         'Topic :: Software Development :: Disassemblers',
                         'Topic :: Software Development :: Libraries :: Python Modules',
                         ]
