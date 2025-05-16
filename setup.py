@@ -12,7 +12,7 @@ def main():
         os.chdir(cwd)
 
     distorm_module = Extension(
-        "_distorm3s",
+        "_distorm3",
         sources=sorted(glob('src/*.c')) + ["python/python_module_init.c"],
         include_dirs=['src', 'include'],
         define_macros=[('SUPPORT_64BIT_OFFSET', None), ('DISTORM_DYNAMIC', None)],
@@ -20,14 +20,13 @@ def main():
 
     options = {
     # Setup instructions
-    'requires'          : ['ctypes'],
-    'provides'          : ['distorm3'],
     'packages'          : ['distorm3'],
-    'package_dir'       : { '' : 'python' },
+    'package_dir'       : { 'distorm3' : 'python/distorm3' },
     'ext_modules'       : [distorm_module],
     # Metadata
     'name'              : 'distorm3s',
-    'version'           : '3.5.3',
+    'version'           : '3.5.4',
+    'license_files'     : ['LICENSE'],
     'description'       : 'The goal of diStorm3 is to decode x86/AMD64' \
                           ' binary streams and return a structure that' \
                           ' describes each instruction.',
@@ -52,13 +51,14 @@ def main():
                         'Operating System :: Microsoft :: Windows',
                         'Operating System :: MacOS :: MacOS X',
                         'Operating System :: POSIX :: Linux',
-                        'Programming Language :: Python :: 3.5',
                         'Programming Language :: Python :: 3.10',
                         'Programming Language :: Python :: 3.11',
                         'Programming Language :: Python :: 3.12',
                         'Topic :: Software Development :: Disassemblers',
                         'Topic :: Software Development :: Libraries :: Python Modules',
-                        ]
+                        ],
+    'python_requires'   : '>=3.6',
+    'long_description_content_type' : "text/plain",                    
     }
 
     # Call the setup function
